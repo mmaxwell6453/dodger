@@ -6,6 +6,8 @@ import 'dodger/main_game.dart';
 import 'package:dodger/ui/control_panel.dart';
 
 void main() {
+  final game = Dodger();
+
   runApp(
     MaterialApp(
       home: Scaffold(
@@ -15,9 +17,16 @@ void main() {
 
             return Stack(
               children: [
-                GameWidget(game: Dodger()),
+                GameWidget(game: game),
 
-                if (isMobile) const Align(child: ControlPanel()),
+                if (isMobile)
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ControlPanel(
+                      onRightDown: game.startMovingRight,
+                      onRightUp: game.stopMovingRight,
+                    ),
+                  ),
               ],
             );
           },

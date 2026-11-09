@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ControlPanel extends StatelessWidget {
-  const ControlPanel({super.key});
+  final VoidCallback onRightDown;
+  final VoidCallback onRightUp;
+
+  const ControlPanel({
+    super.key,
+    required this.onRightDown,
+    required this.onRightUp,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +41,15 @@ class ControlPanel extends StatelessWidget {
                         color: Colors.white,
                         iconSize: 50,
                       ),
-                      IconButton(
-                        padding: EdgeInsets.only(left: 20),
-                        onPressed: () {},
-                        icon: const Icon(Icons.arrow_right),
-                        color: Colors.white,
-                        iconSize: 50,
+                      GestureDetector(
+                        onTapDown: (_) => onRightDown(),
+                        onTapUp: (_) => onRightUp(),
+                        onTapCancel: onRightUp,
+                        child: const Icon(
+                          Icons.arrow_right,
+                          color: Colors.white,
+                          size: 50,
+                        ),
                       ),
                     ],
                   ),
@@ -56,18 +66,30 @@ class ControlPanel extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "A",
-                      style: TextStyle(color: Colors.white),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 22, 174, 95),
+                      shape: BoxShape.circle,
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "A",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "B",
-                      style: TextStyle(color: Colors.white),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 174, 22, 22),
+                      shape: BoxShape.circle,
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "B",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
@@ -77,9 +99,15 @@ class ControlPanel extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () {},
-                child: Text("Menu", style: TextStyle(color: Colors.white)),
+              Container(
+                decoration: const BoxDecoration(
+                  color: Colors.deepPurple,
+                  shape: BoxShape.circle,
+                ),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text("Menu", style: TextStyle(color: Colors.white)),
+                ),
               ),
             ],
           ),

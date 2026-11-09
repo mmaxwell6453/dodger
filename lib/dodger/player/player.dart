@@ -18,11 +18,15 @@ class Player extends CircleComponent with KeyboardHandler {
   void update(double dt) {
     super.update(dt);
 
+    // print("Player update running");
+
     if (movingRight) {
       position.x += speed * dt;
     } else if (movingLeft) {
       position.x -= speed * dt;
     }
+
+    // print('Moving: $movingRight | X: ${position.x}');
   }
 
   @override
