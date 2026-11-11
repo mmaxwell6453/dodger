@@ -25,6 +25,12 @@ void main() {
                     child: ControlPanel(
                       onRightDown: game.startMovingRight,
                       onRightUp: game.stopMovingRight,
+                      onLeftDown: game.startMovingLeft,
+                      onLeftUp: game.stopMovingLeft,
+                      onUpDown: game.startMovingUp,
+                      onUpUp: game.stopMovingUp,
+                      onDownDown: game.startMovingDown,
+                      onDownUp: game.stopMovingDown,
                     ),
                   ),
               ],

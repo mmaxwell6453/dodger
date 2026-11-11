@@ -13,20 +13,25 @@ class Player extends CircleComponent with KeyboardHandler {
   double speed = 200;
   bool movingRight = false;
   bool movingLeft = false;
+  bool movingUp = false;
+  bool movingDown = false;
 
   @override
   void update(double dt) {
     super.update(dt);
 
-    // print("Player update running");
-
     if (movingRight) {
       position.x += speed * dt;
-    } else if (movingLeft) {
+    }
+    if (movingLeft) {
       position.x -= speed * dt;
     }
-
-    // print('Moving: $movingRight | X: ${position.x}');
+    if (movingUp) {
+      position.y -= speed * dt;
+    }
+    if (movingDown) {
+      position.y += speed * dt;
+    }
   }
 
   @override

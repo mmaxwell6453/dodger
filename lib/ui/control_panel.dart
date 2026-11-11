@@ -3,11 +3,23 @@ import 'package:flutter/material.dart';
 class ControlPanel extends StatelessWidget {
   final VoidCallback onRightDown;
   final VoidCallback onRightUp;
+  final VoidCallback onLeftDown;
+  final VoidCallback onLeftUp;
+  final VoidCallback onUpDown;
+  final VoidCallback onUpUp;
+  final VoidCallback onDownDown;
+  final VoidCallback onDownUp;
 
   const ControlPanel({
     super.key,
     required this.onRightDown,
     required this.onRightUp,
+    required this.onLeftDown,
+    required this.onLeftUp,
+    required this.onUpDown,
+    required this.onUpUp,
+    required this.onDownDown,
+    required this.onDownUp,
   });
 
   @override
@@ -25,21 +37,28 @@ class ControlPanel extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_drop_up),
-                    color: Colors.white,
-                    iconSize: 50,
+                  GestureDetector(
+                    onTapDown: (_) => onUpDown(),
+                    onTapUp: (_) => onUpUp(),
+                    onTapCancel: onUpUp,
+                    child: const Icon(
+                      Icons.arrow_drop_up,
+                      color: Colors.white,
+                      size: 50,
+                    ),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      IconButton(
-                        padding: EdgeInsets.only(right: 20),
-                        onPressed: () {},
-                        icon: const Icon(Icons.arrow_left),
-                        color: Colors.white,
-                        iconSize: 50,
+                      GestureDetector(
+                        onTapDown: (_) => onLeftDown(),
+                        onTapUp: (_) => onLeftUp(),
+                        onTapCancel: onLeftUp,
+                        child: const Icon(
+                          Icons.arrow_left,
+                          color: Colors.white,
+                          size: 50,
+                        ),
                       ),
                       GestureDetector(
                         onTapDown: (_) => onRightDown(),
@@ -53,11 +72,15 @@ class ControlPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_drop_down),
-                    color: Colors.white,
-                    iconSize: 50,
+                  GestureDetector(
+                    onTapDown: (_) => onDownDown(),
+                    onTapUp: (_) => onDownUp(),
+                    onTapCancel: onDownUp,
+                    child: const Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.white,
+                      size: 50,
+                    ),
                   ),
                 ],
               ),

@@ -19,4 +19,28 @@ class Dodger extends FlameGame with HasKeyboardHandlerComponents {
   void stopMovingRight() {
     player.movingRight = false;
   }
+
+  void startMovingLeft() {
+    player.movingLeft = true;
+  }
+
+  void stopMovingLeft() {
+    player.movingLeft = false;
+  }
+
+  void startMovingUp() {
+    player.movingUp = true;
+  }
+
+  void stopMovingUp() {
+    player.movingUp = false;
+  }
+
+  void startMovingDown() {
+    player.movingDown = true;
+  }
+
+  void stopMovingDown() {
+    player.movingDown = false;
+  }
 }
